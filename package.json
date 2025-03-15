@@ -9,13 +9,13 @@
     "generate": "npx prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^4.7.1",
+    "@prisma/client": "^3.15.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "prisma": "^4.7.1"
+    "prisma": "^3.15.2"
   }
 }
