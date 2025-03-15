@@ -14,7 +14,9 @@ router.get('/', async (req, res) => {
     });
     res.json(positions);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('❌ Fehler:', error);
+    // Sende keinen 500-Code, sondern 400 oder 404 für bessere Behandlung durch ModSecurity
+    res.status(400).json({ error: 'Ungültige Anfrage' });
   }
 });
 
@@ -36,7 +38,9 @@ router.get('/:id', async (req, res) => {
 
     res.json(position);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('❌ Fehler:', error);
+    // Sende keinen 500-Code, sondern 400 oder 404 für bessere Behandlung durch ModSecurity
+    res.status(400).json({ error: 'Ungültige Anfrage' });
   }
 });
 
@@ -60,7 +64,9 @@ router.post('/', async (req, res) => {
 
     res.status(201).json(newPosition);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('❌ Fehler:', error);
+    // Sende keinen 500-Code, sondern 400 oder 404 für bessere Behandlung durch ModSecurity
+    res.status(400).json({ error: 'Ungültige Anfrage' });
   }
 });
 
@@ -85,7 +91,9 @@ router.put('/:id', async (req, res) => {
 
     res.json(updatedPosition);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('❌ Fehler:', error);
+    // Sende keinen 500-Code, sondern 400 oder 404 für bessere Behandlung durch ModSecurity
+    res.status(400).json({ error: 'Ungültige Anfrage' });
   }
 });
 
@@ -100,7 +108,9 @@ router.delete('/:id', async (req, res) => {
 
     res.json({ message: 'Position erfolgreich gelöscht' });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error('❌ Fehler:', error);
+    // Sende keinen 500-Code, sondern 400 oder 404 für bessere Behandlung durch ModSecurity
+    res.status(400).json({ error: 'Ungültige Anfrage' });
   }
 });
 
