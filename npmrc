@@ -1,1 +1,29 @@
+# Nutze eine Proxy-Registry (falls notwendig)
+registry=https://registry.npmjs.org/
+
+# Installationen im Projektverzeichnis und nicht global
+prefix=${HOME}/.npm-global
+
+# Log-Level für bessere Fehlersuche (silly, info, warn, error)
+loglevel=info
+
+# Maximale Anzahl paralleler Anfragen
+fetch-retry-maxtimeout=60000
+fetch-retry-mintimeout=1000
+fetch-retries=5
+
+# Automatisch Berechtigungen für globale Installation korrigieren
+unsafe-perm=true
+
+# Nutze die Umgebung von Node.js (wichtig für Plesk und Server-Setups)
 scripts-prepend-node-path=true
+
+# Speicherort für Caches und temporäre Dateien
+cache=${HOME}/.npm-cache
+tmp=${HOME}/.npm-tmp
+
+# Optional: Nutze den GitHub Token für private Repositories
+# //npm.pkg.github.com/:_authToken=<DEIN_GITHUB_TOKEN>
+
+# Optional: Nutze den Token für die npm-Registry (für private Pakete)
+# //registry.npmjs.org/:_authToken=<DEIN_NPM_TOKEN>

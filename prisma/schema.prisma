@@ -26,13 +26,11 @@ model ResourcePosition {
   lat         Float
   lng         Float
   rarity      String    @db.VarChar(50)
-  image       Bytes?
+  image       Bytes?    @db.LongBlob // Bilddaten als LongBlob
   lastHarvest DateTime?
 
-  // ✅ Richtige Relation → Referenz auf Resource
   resource Resource @relation(fields: [resourceId], references: [id])
 
-  // ✅ Index ohne `map`
   @@index([resourceId])
-  @@map("resourcepositions") // Tabellenname in der DB bleibt 'resourcepositions'
+  @@map("resourcepositions")
 }
