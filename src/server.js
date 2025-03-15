@@ -1,9 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
 
-import resourceRoutes from './routes/resources.js';
-import resourcePositionRoutes from './routes/resourcePositions.js';
+const resourceRoutes = require('./routes/resources.js');
+const resourcePositionRoutes = require('./routes/resourcePositions.js');
 
 dotenv.config();
 

@@ -7,31 +7,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Resource {
+  id           String @id @default(uuid()) @db.VarChar(255)
+  name         String @db.VarChar(255)
+  type         String @db.VarChar(255)
+  respawnTimer Int
+
+  // ✅ Rückbezug auf die ResourcePosition-Tabelle (1:n-Relation)
+  positions ResourcePosition[]
+
+  @@map("resources") // Tabellenname in der DB bleibt 'resources'
+}
+
 model ResourcePosition {
-  id          String    @id @db.VarChar(36)
+  id          String    @id @default(uuid()) @db.VarChar(255)
   resourceId  String    @db.VarChar(255)
   description String?   @db.Text
   lat         Float
   lng         Float
   rarity      String    @db.VarChar(50)
   image       Bytes?
-  lastHarvest DateTime? @db.DateTime(0)
+  lastHarvest DateTime?
 
-  // ✅ Relation auf resources-Tabelle (korrekter Mapping-Name)
-  resource Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade, onUpdate: Restrict)
+  // ✅ Richtige Relation → Referenz auf Resource
+  resource Resource @relation(fields: [resourceId], references: [id])
 
-  @@index([resourceId], map: "fk_resourceId")
-  @@map("resourcepositions") // ✅ Tabelle wird auf 'resourcepositions' gemappt
-}
-
-model Resource {
-  id           String @id @db.VarChar(255)
-  name         String @db.VarChar(255)
-  type         String @db.VarChar(255)
-  respawnTimer Int
-
-  // ✅ Relation auf ResourcePosition (korrekter Mapping-Name)
-  positions ResourcePosition[]
-
-  @@map("resources") // ✅ Tabelle wird auf 'resources' gemappt
+  // ✅ Index ohne `map`
+  @@index([resourceId])
+  @@map("resourcepositions") // Tabellenname in der DB bleibt 'resourcepositions'
 }
