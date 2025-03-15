@@ -1,0 +1,21 @@
+{
+  "name": "api-aoc-map",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "migrate": "npx prisma migrate dev --name init",
+    "generate": "npx prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.7.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "prisma": "^4.7.1"
+  }
+}
